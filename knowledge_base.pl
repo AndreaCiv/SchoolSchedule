@@ -1,29 +1,29 @@
 % subject(Subject, Professor, Course, Year, Semester, WeeklyLessons)
 % dove WeeklyLessons è il numero di lezioni, da due ore, settimanali,
 % Predicati per definire le materie da inserire nell'orario
-subject("Analisi 1", "Montecchiari", "Ingegneria Informatica", 1,1,3).
-subject("Algebra Lineare", "Marietti", "Ingegneria Informatica", 1,1,2).
-subject("Fisica 1", "Albertini", "Ingegneria Informatica", 1,1,3).
-subject("Lingua Inglese", "Scott", "Ingegneria Informatica", 1,1,1).
-subject("Analisi 2", "Isernia", "Ingegneria Informatica", 1,2,4).
-subject("Fisica 2", "Lucchetta", "Ingegneria Informatica", 1,2,4).
-subject("Fondamenti Di Informatica", "Sernani", "Ingegneria Informatica", 1,2,6).
-subject("Economia", "Iacobucci", "Ingegneria Informatica", 1,2,4).
+subject('Analisi 1', 'Montecchiari', 'Ingegneria Informatica', 1,1,3).
+subject('Algebra Lineare', 'Marietti', 'Ingegneria Informatica', 1,1,2).
+subject('Fisica 1', 'Albertini', 'Ingegneria Informatica', 1,1,3).
+subject('Lingua Inglese', 'Scott', 'Ingegneria Informatica', 1,1,1).
+subject('Analisi 2', 'Isernia', 'Ingegneria Informatica', 1,2,4).
+subject('Fisica 2', 'Lucchetta', 'Ingegneria Informatica', 1,2,4).
+subject('Fondamenti Di Informatica', 'Sernani', 'Ingegneria Informatica', 1,2,6).
+subject('Economia', 'Iacobucci', 'Ingegneria Informatica', 1,2,4).
 
 % Predicati che definiscono i giorni della settimana in cui ci possono
 % essere lezioni
-day("Monday").
-day("Thursday").
-day("Wednesday").
-day("Tuesday").
-day("Friday").
+day('Monday').
+day('Thursday').
+day('Wednesday').
+day('Tuesday').
+day('Friday').
 
 % after_day_1(Day1, Day2)
 % Predicati per definire se Day2 è il giorno successivo a Day1
-after_day_1("Monday", "Thursday").
-after_day_1("Thursday", "Wednesday").
-after_day_1("Wednesday", "Tuesday").
-after_day_1("Tuesday", "Friday").
+after_day_1('Monday', 'Thursday').
+after_day_1('Thursday', 'Wednesday').
+after_day_1('Wednesday', 'Tuesday').
+after_day_1('Tuesday', 'Friday').
 
 % after_day(Day1, Day2)
 % Predicati per definire se Day2 è uno dei giorni successivi a Day1
@@ -34,9 +34,9 @@ after_day(Day1, Day2) :- after_day_1(Day1, Day3), after_day(Day3, Day2).
 % after_hour_1(StartHour1, StartHour2)
 % Predicati per definire se StartHour2 è l'ora di inizio (di
 % una lezione) successiva all'ora di inizio StartHour1
-after_hour_1("8:30","10:30").
-after_hour_1("10:30","14:30").
-after_hour_1("14:30","16:30").
+after_hour_1('8:30','10:30').
+after_hour_1('10:30','14:30').
+after_hour_1('14:30','16:30').
 
 % after_hour(StartHour1, StartHour2).
 % Predicati per definire se StartHour2 è una delle ore di inizio (di
@@ -46,13 +46,13 @@ after_hour(StartHour1, StartHour2) :- after_hour_1(StartHour1,StartHour3), after
 
 % Predicati che definiscono i possibili slot orari del calendario
 % slot(Day, StartHour, FinishHour).
-slot(Day,"8:30","10:30"):-
+slot(Day,'8:30','10:30'):-
     day(Day).
-slot(Day,"10:30","12:30"):-
+slot(Day,'10:30','12:30'):-
     day(Day).
-slot(Day,"14:30","16:30"):-
+slot(Day,'14:30','16:30'):-
     day(Day).
-slot(Day,"16:30","18:30"):-
+slot(Day,'16:30','18:30'):-
     day(Day).
 
 % availability(Subject, Day, StartHour).
@@ -61,10 +61,10 @@ slot(Day,"16:30","18:30"):-
 % NB: Anche se è possibile fare sempre lezione per una materia, ci deve
 % comunque essere il predicato availability per quella materia che sarà
 % sempre vero.
-availability("Analisi 1", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
-availability("Fisica 1", Day, _) :- Day = "Monday"; Day = "Wednesday"; Day = "Friday".
-availability("Lingua Inglese", Day, _) :- Day = "Thursday"; Day = "Tuesday".
-availability("Algebra Lineare", Day, _) :- Day = "Thursday"; Day = "Tuesday".
+availability('Analisi 1', Day, StartHour) :- Day = 'Monday', StartHour = '8:30' ; Day = 'Wednesday', StartHour = '8:30'; Day = 'Friday', StartHour= '8:30'.
+availability('Fisica 1', Day, _) :- Day = 'Monday'; Day = 'Wednesday'; Day = 'Friday'.
+availability('Lingua Inglese', Day, _) :- Day = 'Thursday'; Day = 'Tuesday'.
+availability('Algebra Lineare', Day, _) :- Day = 'Thursday'; Day = 'Tuesday'.
 
 % Predicato che definisce l'assegnamento di una lezione ad uno slot secondo le disponibilit di quella materia
 session(Day, StartHour, FinishHour, Subject, Professor, Course, Year, Semester, WeeklyLessons):-

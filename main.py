@@ -1,7 +1,10 @@
-from pyswip import Prolog
+﻿from swiplserver import *
 
-if __name__ == "__main__":
-    prolog = Prolog()
-    prolog.consult("knowledge_base_file_definitivo.pl")
-    risposta = list(prolog.query("create_semester_schedule(\"Ingegneria Informatica\", 1,1,X)."))
-    print(risposta)
+with PrologMQI() as mqi:
+	with mqi.create_thread() as prolog_thread:
+		result = prolog_thread.query("set_prolog_flag(encoding,utf8).")
+		print(result)
+		result = prolog_thread.query("consult(\"knowledge_base.pl\").")
+		print(result)
+		result = prolog_thread.query("create_semester_schedule(\"Ingegneria Informatica\", 1, 1, X)")
+		print(result[1])

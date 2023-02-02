@@ -187,4 +187,4 @@ create_course_schedule(Bag,Schedule) :-
 create_semester_schedule(Course, Year, Semester, SemesterSchedule) :-
     findall([Subject,Professor,WeeklyLessons],subject(Subject, Professor, Course, Year, Semester , WeeklyLessons), Bag),
     create_course_schedule(Bag, SemesterSchedule),
-    no_conflict_6(SemesterSchedule),
+    no_conflict_6(SemesterSchedule).

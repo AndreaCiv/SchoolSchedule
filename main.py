@@ -1,4 +1,5 @@
 ﻿from swiplserver import *
+from Schedule import Schedule
 
 with PrologMQI() as mqi:
 	with mqi.create_thread() as prolog_thread:
@@ -7,4 +8,5 @@ with PrologMQI() as mqi:
 		result = prolog_thread.query("consult(\"knowledge_base.pl\").")
 		print(result)
 		result = prolog_thread.query("create_semester_schedule(\"Ingegneria Informatica\", 1, 1, X)")
-		print(result[1])
+		schedule = Schedule(result[1]['X'])
+		schedule.print_schedule()

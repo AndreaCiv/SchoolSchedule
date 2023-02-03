@@ -14,24 +14,24 @@ class Session:
         coordinates = []
 
         if self.startHour == "8:30":
-            coordinates.append(1)
+            coordinates.append(0)
         elif self.startHour == "10:30":
-            coordinates.append(2)
+            coordinates.append(1)
         elif self.startHour == "14:30":
-            coordinates.append(3)
+            coordinates.append(2)
         elif self.startHour == "16:30":
-            coordinates.append(4)
+            coordinates.append(3)
 
         if self.day == "Monday":
-            coordinates.append(1)
+            coordinates.append(0)
         elif self.day == "Thursday":
-            coordinates.append(2)
+            coordinates.append(1)
         elif self.day == "Wednesday":
-            coordinates.append(3)
+            coordinates.append(2)
         elif self.day == "Tuesday":
-            coordinates.append(4)
+            coordinates.append(3)
         elif self.day == "Friday":
-            coordinates.append(5)
+            coordinates.append(4)
 
         return coordinates
 

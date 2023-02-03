@@ -7,10 +7,10 @@ subject("Analisi 1", "Montecchiari", "Ingegneria Informatica", 1,1,3).
 subject("Algebra Lineare", "Marietti", "Ingegneria Informatica", 1,1,2).
 subject("Fisica 1", "Albertini", "Ingegneria Informatica", 1,1,3).
 subject("Lingua Inglese", "Scott", "Ingegneria Informatica", 1,1,1).
-subject("Analisi 2", "Isernia", "Ingegneria Informatica", 1,2,4).
-subject("Fisica 2", "Lucchetta", "Ingegneria Informatica", 1,2,4).
-subject("Fondamenti Di Informatica", "Sernani", "Ingegneria Informatica", 1,2,6).
-subject("Economia", "Iacobucci", "Ingegneria Informatica", 1,2,4).
+subject("Analisi 2", "Isernia", "Ingegneria Informatica", 1,2,3).
+subject("Fisica 2", "Lucchetta", "Ingegneria Informatica", 1,2,3).
+subject("Fondamenti Di Informatica", "Sernani", "Ingegneria Informatica", 1,2,2).
+subject("Economia", "Iacobucci", "Ingegneria Informatica", 1,2,2).
 
 % Predicato che restituisce tutti i corsi disponibili
 get_all_courses(Courses):-
@@ -74,6 +74,11 @@ availability("Analisi 1", Day, StartHour) :- Day = "Monday", StartHour = "8:30" 
 availability("Fisica 1", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
 availability("Lingua Inglese", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 availability("Algebra Lineare", Day, _) :- Day = "Thursday"; Day = "Tuesday".
+availability("Analisi 2", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
+availability("Fisica 2", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
+availability("Fondamenti Di Informatica", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Wednesday".
+availability("Economia", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Friday".
+
 
 % Predicato che definisce l"assegnamento di una lezione ad uno slot secondo le disponibilit di quella materia
 session(Day, StartHour, FinishHour, Subject, Professor, Course, Year, Semester, WeeklyLessons):-

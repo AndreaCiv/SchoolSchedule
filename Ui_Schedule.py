@@ -276,8 +276,8 @@ class Ui_Schedule(object):
         if self.numero_calendario == len(self.possible_schedules)-1:
             QMessageBox.critical(None,"Errore", "Non ci sono più calendari disponibili", QMessageBox.Ok,QMessageBox.Ok)
             return
-        for i in range(1,5):
-            for j in range(1,6):
+        for i in range(0,4):
+            for j in range(0,5):
                 self.tableWidget.setItem(i,j, QTableWidgetItem())
         self.numero_calendario = self.numero_calendario + 1
         self.visualizza_orario(self.possible_schedules[self.numero_calendario])

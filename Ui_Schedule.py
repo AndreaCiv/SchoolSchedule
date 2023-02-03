@@ -17,6 +17,7 @@ from PyQt5.QtWidgets import QTableWidgetItem
 
 class Ui_Schedule(object):
     def setupUi(self, Schedule, prologInterface):
+        self.prologInterface = prologInterface
         Schedule.setObjectName("Schedule")
         Schedule.setWindowModality(QtCore.Qt.WindowModal)
         Schedule.resize(1000, 600)
@@ -131,7 +132,7 @@ class Ui_Schedule(object):
         self.calcola_orario.setMaximumSize(QtCore.QSize(150, 50))
         self.calcola_orario.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
         self.calcola_orario.setObjectName("calcola_orario")
-        self.calcola_orario.clicked.connect(self.calcola_orario)
+        self.calcola_orario.clicked.connect(self.visualizza_orario)
         self.horizontalLayout.addWidget(self.calcola_orario)
         spacerItem5 = QtWidgets.QSpacerItem(55, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
@@ -210,8 +211,6 @@ class Ui_Schedule(object):
         self.retranslateUi(Schedule)
         QtCore.QMetaObject.connectSlotsByName(Schedule)
 
-        self.prologInterface = prologInterface
-
     def retranslateUi(self, Schedule):
         _translate = QtCore.QCoreApplication.translate
         Schedule.setWindowTitle(_translate("Schedule", "Schedule for you"))
@@ -246,13 +245,17 @@ class Ui_Schedule(object):
         item.setText(_translate("Schedule", "Friday"))
         self.cambia_orario.setText(_translate("Schedule", "Cambia Orario"))
 
-    def calcola_orario(self):
-        possible_schedules = self.prologInterface.create_semester_schedule("Ingegneria Informatica",1,1)
+    def visualizza_orario(self):
+        course = self.seleziona_corso.currentText()
+        year = int(self.seleziona_anno.currentText())
+        semester = int(self.seleziona_semestre.currentText())
+        possible_schedules = self.prologInterface.create_semester_schedule(course,year,semester)
         first_schedule = possible_schedules[0]
-        for session in first_schedule:
+        for session in first_schedule.schedule:
             item = QTableWidgetItem()
             item.setText(session.subject)
-            self.tableWidget.setItem()
+            coordinates = session.get_coordinates()
+            self.tableWidget.setItem(coordinates[0], coordinates[1], item)
 
 if __name__ == "_main_":
     import sys

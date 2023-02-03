@@ -13,5 +13,27 @@ class Session:
     def get_coordinates(self):
         coordinates = []
 
+        if self.startHour == "8:30":
+            coordinates.append(1)
+        elif self.startHour == "10:30":
+            coordinates.append(2)
+        elif self.startHour == "14:30":
+            coordinates.append(3)
+        elif self.startHour == "16:30":
+            coordinates.append(4)
+
+        if self.day == "Monday":
+            coordinates.append(1)
+        elif self.day == "Thursday":
+            coordinates.append(2)
+        elif self.day == "Wednesday":
+            coordinates.append(3)
+        elif self.day == "Tuesday":
+            coordinates.append(4)
+        elif self.day == "Friday":
+            coordinates.append(5)
+
+        return coordinates
+
     def print_session(self):
         print(self.day + " " + self.startHour + " " + self.finishHour + " " + self.subject + " " + self.professor + " " + self.course)

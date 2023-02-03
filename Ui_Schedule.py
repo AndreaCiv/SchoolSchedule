@@ -67,8 +67,9 @@ class Ui_Schedule(object):
         #self.seleziona_corso.setMaximumSize(QtCore.QSize(16777215, 19))
         self.seleziona_corso.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.seleziona_corso.setObjectName("seleziona_corso")
-        self.seleziona_corso.addItem("")
-        self.seleziona_corso.addItem("")
+        self.populate_seleziona_corso()
+        #self.seleziona_corso.addItem("")
+        #self.seleziona_corso.addItem("")
         self.verticalLayout_2.addWidget(self.seleziona_corso)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -210,6 +211,15 @@ class Ui_Schedule(object):
 
         self.retranslateUi(Schedule)
         QtCore.QMetaObject.connectSlotsByName(Schedule)
+
+
+
+    def populate_seleziona_corso(self):
+        courses = self.prologInterface.get_courses()
+        for course in courses:
+            print(course)
+            self.seleziona_corso.addItem(course)
+
 
     def retranslateUi(self, Schedule):
         _translate = QtCore.QCoreApplication.translate

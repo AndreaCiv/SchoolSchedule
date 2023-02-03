@@ -286,7 +286,7 @@ class Ui_Schedule(object):
     def visualizza_orario(self, schedule):
         for session in schedule.schedule:
             item = QTableWidgetItem()
-            item.setText(session.subject)
+            item.setText(session.subject+"\n"+session.professor)
             coordinates = session.get_coordinates()
             self.tableWidget.setItem(coordinates[0], coordinates[1], item)
 

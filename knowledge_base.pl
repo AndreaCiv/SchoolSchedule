@@ -12,6 +12,13 @@ subject("Fisica 2", "Lucchetta", "Ingegneria Informatica", 1,2,4).
 subject("Fondamenti Di Informatica", "Sernani", "Ingegneria Informatica", 1,2,6).
 subject("Economia", "Iacobucci", "Ingegneria Informatica", 1,2,4).
 
+% Predicato che restituisce tutti i corsi disponibili
+get_all_courses(Courses):-
+    findall(Course , subject(_,_, Course,_,_,_), AllCourses),
+    remove_duplicates(AllCourses, Courses).
+
+
+
 % Predicati che definiscono i giorni della settimana in cui ci possono
 % essere lezioni
 day("Monday").

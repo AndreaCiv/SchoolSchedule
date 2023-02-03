@@ -1,12 +1,8 @@
-﻿from swiplserver import *
-from Schedule import Schedule
+﻿from PrologInterface import PrologInterface
 
-with PrologMQI() as mqi:
-	with mqi.create_thread() as prolog_thread:
-		result = prolog_thread.query("set_prolog_flag(encoding,utf8).")
-		print(result)
-		result = prolog_thread.query("consult(\"knowledge_base.pl\").")
-		print(result)
-		result = prolog_thread.query("create_semester_schedule(\"Ingegneria Informatica\", 1, 1, X)")
-		schedule = Schedule(result[1]['X'])
-		schedule.print_schedule()
+if __name__ == "__main__":
+	file_name = "knowledge_base.pl"
+	prologInterface = PrologInterface(file_name)
+	possible_schedules = prologInterface.create_semester_schedule("Ingegneria Informatica", 1, 1)
+	possible_schedules[0].print_schedule()
+	prologInterface.quit()

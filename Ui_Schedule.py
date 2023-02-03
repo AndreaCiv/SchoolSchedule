@@ -146,7 +146,7 @@ class Ui_Schedule(object):
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setMinimumSize(QtCore.QSize(850, 200))
-        self.tableWidget.setMaximumSize(QtCore.QSize(1700, 400))
+        self.tableWidget.setMaximumSize(QtCore.QSize(850, 200))
         self.tableWidget.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "")
         self.tableWidget.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

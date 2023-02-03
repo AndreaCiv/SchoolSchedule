@@ -1,3 +1,5 @@
+:- dynamic(subject/6).
+:- dynamic(availability/3).
 % subject(Subject, Professor, Course, Year, Semester, WeeklyLessons)
 % dove WeeklyLessons è il numero di lezioni, da due ore, settimanali,
 % Predicati per definire le materie da inserire nell"orario

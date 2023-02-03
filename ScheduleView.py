@@ -1,8 +1,8 @@
-from PyQt5.QtWidgets import *
-from Ui_Schedule import *
-class ScheduleView(QMainWindow):
+from Ui_Schedule import Ui_Schedule
+from PyQt6.QtWidgets import QDialog
+class ScheduleView(QDialog):
     def __init__(self):
-        super(QMainWindow, self).__init__()
+        super(QDialog, self).__init__()
 
         self.ScheduleView = Ui_Schedule()
         self.ScheduleView.setupUi(self)

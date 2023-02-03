@@ -1,5 +1,6 @@
 from swiplserver import *
-from Schedule import *
+from Ui_Schedule import Ui_Schedule
+from Schedule import Schedule
 class PrologInterface:
 
     def __init__(self, file_name):

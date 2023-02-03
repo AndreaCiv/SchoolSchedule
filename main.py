@@ -1,5 +1,5 @@
 ﻿from PrologInterface import PrologInterface
-from PyQt5.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication
 import sys
 from ScheduleView import ScheduleView
 
@@ -8,7 +8,6 @@ if __name__ == "__main__":
 	prologInterface = PrologInterface(file_name)
 	possible_schedules = prologInterface.create_semester_schedule("Ingegneria Informatica", 1, 1)
 	app = QApplication(sys.argv)
-	#app.setStyle('Fusion')
 	view = ScheduleView()
 	view.show()
 	app.exec_()

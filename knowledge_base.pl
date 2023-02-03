@@ -71,7 +71,7 @@ slot(Day,"16:30","18:30"):-
 % comunque essere il predicato availability per quella materia che sarà
 % sempre vero.
 availability("Analisi 1", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
-availability("Fisica 1", Day, _) :- Day = "Monday"; Day = "Wednesday"; Day = "Friday".
+availability("Fisica 1", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
 availability("Lingua Inglese", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 availability("Algebra Lineare", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 

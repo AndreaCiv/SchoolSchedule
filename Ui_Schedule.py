@@ -12,12 +12,16 @@ from PyQt5 import QtCore, QtGui
 from PyQt5 import QtWidgets
 
 from PyQt5 import *
-from PyQt5.QtWidgets import QTableWidgetItem
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 
 class Ui_Schedule(object):
     def setupUi(self, Schedule, prologInterface):
         self.prologInterface = prologInterface
+
+        self.possible_schedules = None
+        self.numero_calendario = 0
+
         Schedule.setObjectName("Schedule")
         Schedule.setWindowModality(QtCore.Qt.WindowModal)
         Schedule.resize(1000, 600)
@@ -133,7 +137,7 @@ class Ui_Schedule(object):
         self.calcola_orario.setMaximumSize(QtCore.QSize(150, 50))
         self.calcola_orario.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
         self.calcola_orario.setObjectName("calcola_orario")
-        self.calcola_orario.clicked.connect(self.visualizza_orario)
+        self.calcola_orario.clicked.connect(self.crea_orario_prima_volta)
         self.horizontalLayout.addWidget(self.calcola_orario)
         spacerItem5 = QtWidgets.QSpacerItem(55, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem5)
@@ -199,6 +203,7 @@ class Ui_Schedule(object):
         self.cambia_orario.setMaximumSize(QtCore.QSize(150, 50))
         self.cambia_orario.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
         self.cambia_orario.setObjectName("cambia_orario")
+        self.cambia_orario.clicked.connect(self.cambia_orario_funzione)
         self.gridLayout.addWidget(self.cambia_orario, 5, 4, 1, 1)
         spacerItem13 = QtWidgets.QSpacerItem(64, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem13, 5, 5, 1, 1)
@@ -255,13 +260,31 @@ class Ui_Schedule(object):
         item.setText(_translate("Schedule", "Friday"))
         self.cambia_orario.setText(_translate("Schedule", "Cambia Orario"))
 
-    def visualizza_orario(self):
+    def crea_orario_prima_volta(self):
         course = self.seleziona_corso.currentText()
         year = int(self.seleziona_anno.currentText())
         semester = int(self.seleziona_semestre.currentText())
-        possible_schedules = self.prologInterface.create_semester_schedule(course,year,semester)
-        first_schedule = possible_schedules[0]
-        for session in first_schedule.schedule:
+        possible_schedules = self.prologInterface.create_semester_schedule(course, year, semester)
+        self.possible_schedules = possible_schedules
+        first_schedule = self.possible_schedules[0]
+        self.visualizza_orario(first_schedule)
+
+    def cambia_orario_funzione(self):
+        if self.possible_schedules == None:
+            QMessageBox.critical(None,"Errore", "Non è ancora stato calcolato nessun orario",QMessageBox.Ok, QMessageBox.Ok)
+            return
+        if self.numero_calendario == len(self.possible_schedules)-1:
+            QMessageBox.critical(None,"Errore", "Non ci sono più calendari disponibili", QMessageBox.Ok,QMessageBox.Ok)
+            return
+        for i in range(1,5):
+            for j in range(1,6):
+                self.tableWidget.setItem(i,j, QTableWidgetItem())
+        self.numero_calendario = self.numero_calendario + 1
+        self.visualizza_orario(self.possible_schedules[self.numero_calendario])
+
+
+    def visualizza_orario(self, schedule):
+        for session in schedule.schedule:
             item = QTableWidgetItem()
             item.setText(session.subject)
             coordinates = session.get_coordinates()

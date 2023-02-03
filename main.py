@@ -1,5 +1,5 @@
 ﻿from PrologInterface import PrologInterface
-from PyQt6.QtWidgets import QApplication
+from PyQt5.QtWidgets import *
 import sys
 from ScheduleView import ScheduleView
 

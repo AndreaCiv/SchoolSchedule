@@ -10,5 +10,8 @@ class Session:
         self.semester = session[7]
         self.weeklyLessons = session[8]
 
+    def get_coordinates(self):
+        coordinates = []
+
     def print_session(self):
         print(self.day + " " + self.startHour + " " + self.finishHour + " " + self.subject + " " + self.professor + " " + self.course)

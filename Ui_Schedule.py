@@ -13,7 +13,7 @@ from PyQt5 import QtWidgets
 
 from PyQt5 import *
 from PyQt5.QtCore import Qt
-from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
+from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox, QAbstractItemView
 from SubjectsListView import SubjectsListView
 
 class Ui_Schedule(object):
@@ -187,6 +187,7 @@ class Ui_Schedule(object):
         self.tableWidget.verticalHeader().setDefaultSectionSize(40)
         self.tableWidget.verticalHeader().setSortIndicatorShown(False)
         self.tableWidget.verticalHeader().setStretchLastSection(False)
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.gridLayout.addWidget(self.tableWidget, 3, 1, 1, 4)
         spacerItem8 = QtWidgets.QSpacerItem(64, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem8, 3, 5, 1, 1)

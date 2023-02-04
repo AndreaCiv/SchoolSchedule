@@ -73,6 +73,7 @@ class Ui_SubjectsList(object):
         self.tableWidget.setSizePolicy(sizePolicy)
         self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
         self.tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
+        self.tableWidget.setEditTriggers(QAbstractItemView.NoEditTriggers)
         self.tableWidget.setMinimumSize(QtCore.QSize(850, 200))
         self.tableWidget.setMaximumSize(QtCore.QSize(850, 200))
         self.tableWidget.setAutoFillBackground(False)

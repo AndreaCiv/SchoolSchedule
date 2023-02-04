@@ -3,7 +3,7 @@ from Schedule import *
 class PrologInterface:
 
     def __init__(self, file_name):
-        self.mqi = PrologMQI()
+        self.mqi = PrologMQI(prolog_path="c:/program files/swipl/bin")
         self.prolog_thread = self.mqi.create_thread()
         self.prolog_thread.query("set_prolog_flag(encoding,utf8).")
         self.prolog_thread.query("consult(\""+ file_name +"\").")

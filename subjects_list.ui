@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>SubjectsList</class>
+ <widget class="QWidget" name="SubjectsList">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1000</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1000</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Subjects List</string>
+  </property>
+  <property name="windowIcon">
+   <iconset>
+    <normaloff>padre-pio.jpg</normaloff>padre-pio.jpg</iconset>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(193, 9, 42);
+alternate-background-color: rgb(255, 255, 255);
+</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0" colspan="5">
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <property name="sizeConstraint">
+        <enum>QLayout::SetMinAndMaxSize</enum>
+       </property>
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: rgb(255, 255, 255);</string>
+         </property>
+         <property name="text">
+          <string>Inserisci/elimina corso</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3"/>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_4"/>
+     </item>
+    </layout>
+   </item>
+   <item row="1" column="2">
+    <spacer name="verticalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>147</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="0">
+    <spacer name="horizontalSpacer_7">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="2" column="1" colspan="4">
+    <widget class="QTableWidget" name="tableWidget">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Maximum" vsizetype="Maximum">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="minimumSize">
+      <size>
+       <width>850</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>850</width>
+       <height>200</height>
+      </size>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);
+</string>
+     </property>
+     <property name="verticalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOn</enum>
+     </property>
+     <property name="horizontalScrollBarPolicy">
+      <enum>Qt::ScrollBarAlwaysOff</enum>
+     </property>
+     <property name="sizeAdjustPolicy">
+      <enum>QAbstractScrollArea::AdjustToContents</enum>
+     </property>
+     <property name="alternatingRowColors">
+      <bool>false</bool>
+     </property>
+     <attribute name="horizontalHeaderVisible">
+      <bool>true</bool>
+     </attribute>
+     <attribute name="horizontalHeaderCascadingSectionResizes">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderDefaultSectionSize">
+      <number>141</number>
+     </attribute>
+     <attribute name="horizontalHeaderHighlightSections">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="horizontalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderVisible">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderDefaultSectionSize">
+      <number>40</number>
+     </attribute>
+     <attribute name="verticalHeaderShowSortIndicator" stdset="0">
+      <bool>false</bool>
+     </attribute>
+     <attribute name="verticalHeaderStretchLastSection">
+      <bool>false</bool>
+     </attribute>
+     <column>
+      <property name="text">
+       <string>Materia</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Prof</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Corso</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Semestre</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Anno</string>
+      </property>
+     </column>
+     <column>
+      <property name="text">
+       <string>Lezioni Settimanali</string>
+      </property>
+     </column>
+    </widget>
+   </item>
+   <item row="2" column="5">
+    <spacer name="horizontalSpacer_5">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>64</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="3" column="3">
+    <spacer name="verticalSpacer_6">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>147</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="0">
+    <spacer name="horizontalSpacer_8">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>60</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="1">
+    <widget class="QPushButton" name="aggiungi_materia">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Aggiungi</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="2" colspan="2">
+    <spacer name="horizontalSpacer_3">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>539</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item row="4" column="4">
+    <widget class="QPushButton" name="elimina_materia">
+     <property name="minimumSize">
+      <size>
+       <width>150</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>150</width>
+       <height>50</height>
+      </size>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Elimina</string>
+     </property>
+    </widget>
+   </item>
+   <item row="4" column="5">
+    <spacer name="horizontalSpacer_6">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>64</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

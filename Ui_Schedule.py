@@ -14,7 +14,7 @@ from PyQt5 import QtWidgets
 from PyQt5 import *
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
-
+from SubjectsListView import SubjectsListView
 
 class Ui_Schedule(object):
     def setupUi(self, Schedule, prologInterface):
@@ -213,6 +213,7 @@ class Ui_Schedule(object):
         self.modifica_materie.setMaximumSize(QtCore.QSize(150, 50))
         self.modifica_materie.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
         self.modifica_materie.setObjectName("modifica_materie")
+        self.modifica_materie.clicked.connect(self.open_subjects_list)
         self.gridLayout.addWidget(self.modifica_materie, 5, 1, 1, 1)
 
 
@@ -230,6 +231,9 @@ class Ui_Schedule(object):
         self.retranslateUi(Schedule)
         QtCore.QMetaObject.connectSlotsByName(Schedule)
 
+    def open_subjects_list(self):
+        self.vista_lista_materie = SubjectsListView(self.prologInterface)
+        self.vista_lista_materie.show()
 
     def populate_seleziona_corso(self):
         courses = self.prologInterface.get_courses()
@@ -255,17 +259,17 @@ class Ui_Schedule(object):
     def retranslateUi(self, Schedule):
         _translate = QtCore.QCoreApplication.translate
         Schedule.setWindowTitle(_translate("Schedule", "Schedule for you"))
-        self.label.setText(_translate("Schedule", "Seleziona corso"))
+        self.label.setText(_translate("Schedule", "Select Course"))
         #self.seleziona_corso.setItemText(0, _translate("Schedule", "Ingegneria Informatica"))
         #self.seleziona_corso.setItemText(1, _translate("Schedule", "Ingeneria Elettronica"))
-        self.label_2.setText(_translate("Schedule", "Seleziona anno"))
+        self.label_2.setText(_translate("Schedule", "Select year"))
         #self.seleziona_anno.setItemText(0, _translate("Schedule", "1"))
         #self.seleziona_anno.setItemText(1, _translate("Schedule", "2"))
-        self.label_3.setText(_translate("Schedule", "Seleziona semestre"))
+        self.label_3.setText(_translate("Schedule", "Select semester"))
         #self.seleziona_semestre.setItemText(0, _translate("Schedule", "1"))
         #self.seleziona_semestre.setItemText(1, _translate("Schedule", "2"))
         #self.seleziona_semestre.setItemText(2, _translate("Schedule", "3"))
-        self.calcola_orario.setText(_translate("Schedule", "Calcola Orario"))
+        self.calcola_orario.setText(_translate("Schedule", "Calculate Schedule"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Schedule", "8:30-10:30"))
         item = self.tableWidget.verticalHeaderItem(1)
@@ -284,8 +288,8 @@ class Ui_Schedule(object):
         item.setText(_translate("Schedule", "Tuesday"))
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("Schedule", "Friday"))
-        self.cambia_orario.setText(_translate("Schedule", "Cambia Orario"))
-        self.modifica_materie.setText(_translate("Schedule", "Modifica Materie"))
+        self.cambia_orario.setText(_translate("Schedule", "Change Schedule"))
+        self.modifica_materie.setText(_translate("Schedule", "Modify Subjects"))
 
     # Funzione da connettere al bottone calcola orario
     # Calcola l'orario e lo visualizza sull'interfaccia grafica

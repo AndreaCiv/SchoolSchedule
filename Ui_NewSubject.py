@@ -12,7 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 
 class Ui_NewSubject(object):
-    def setupUi(self, SubjectsList):
+    def setupUi(self, SubjectsList, prologInterface):
         SubjectsList.setObjectName("SubjectsList")
         SubjectsList.resize(1000, 600)
         SubjectsList.setMinimumSize(QtCore.QSize(1000, 600))

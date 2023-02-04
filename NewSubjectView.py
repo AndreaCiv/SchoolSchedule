@@ -5,7 +5,7 @@ class NewSubjectView(QWidget):
         super(QWidget, self).__init__()
 
         self.newSubjet = Ui_NewSubject()
-        self.ListView.setupUi(self, prologInterface)
+        self.newSubjet.setupUi(self, prologInterface)
 
     def show_new_subject_view(self):
         self.show()

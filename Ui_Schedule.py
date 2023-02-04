@@ -73,8 +73,6 @@ class Ui_Schedule(object):
         self.seleziona_corso.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.seleziona_corso.setObjectName("seleziona_corso")
 
-        self.populate_seleziona_corso()
-
         self.seleziona_corso.activated.connect(self.populate_seleziona_anno)
 
         self.verticalLayout_2.addWidget(self.seleziona_corso)
@@ -226,20 +224,23 @@ class Ui_Schedule(object):
         self.statusbar.setObjectName("statusbar")
         Schedule.setStatusBar(self.statusbar)
 
-        self.populate_seleziona_anno()
-        self.populate_seleziona_semestre()
         self.retranslateUi(Schedule)
         QtCore.QMetaObject.connectSlotsByName(Schedule)
 
+        self.populate_seleziona_corso()
+        self.populate_seleziona_anno()
+        self.populate_seleziona_semestre()
+
     def open_subjects_list(self):
-        self.vista_lista_materie = SubjectsListView(self.prologInterface)
+        self.vista_lista_materie = SubjectsListView(self.prologInterface, self.populate_seleziona_corso)
         self.vista_lista_materie.show_subject_list_view()
 
     def populate_seleziona_corso(self):
         courses = self.prologInterface.get_courses()
+        self.seleziona_corso.clear()
         for course in courses:
-            print(course)
             self.seleziona_corso.addItem(course)
+        self.populate_seleziona_anno()
 
     def populate_seleziona_anno(self):
         self.seleziona_anno.clear()
@@ -247,6 +248,7 @@ class Ui_Schedule(object):
         years = self.prologInterface.get_years_by_course(course)
         for year in years:
             self.seleziona_anno.addItem(str(year))
+        self.populate_seleziona_semestre()
 
     def populate_seleziona_semestre(self):
         self.seleziona_semestre.clear()

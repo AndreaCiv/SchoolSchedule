@@ -200,11 +200,6 @@ class Ui_SubjectsList(object):
     def elimina_materia_funzione(self):
         i = self.tableWidget.currentRow()
         materia = self.tableWidget.item(i,0).text()
-        professore = self.tableWidget.item(i,1).text()
-        corso = self.tableWidget.item(i,2).text()
-        anno = int(self.tableWidget.item(i,3).text())
-        semestre = int(self.tableWidget.item(i,4).text())
-        lezioni_settimanali = int(self.tableWidget.item(i,5).text())
 
         risposta = QMessageBox.question(None, "Delete Subject",
                                         "Are you sure you want to delete "+materia+"?",

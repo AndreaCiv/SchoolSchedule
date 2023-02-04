@@ -10,4 +10,3 @@ class ScheduleView(QMainWindow):
     def show_schedule(self, prologInterface):
         self.ScheduleView.setupUi(self, prologInterface)
         self.show()
-

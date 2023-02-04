@@ -310,6 +310,7 @@ class Ui_Schedule(object):
             item.setTextAlignment(Qt.AlignCenter)
             coordinates = session.get_coordinates()
             self.tableWidget.setItem(coordinates[0], coordinates[1], item)
+            item.setFlags(item.flags() ^ Qt.ItemIsEditable)
 
 if __name__ == "_main_":
     import sys

@@ -9,7 +9,7 @@ subject("Fisica 1", "Albertini", "Ingegneria Informatica", 1,1,3).
 subject("Lingua Inglese", "Scott", "Ingegneria Informatica", 1,1,1).
 subject("Analisi 2", "Isernia", "Ingegneria Informatica", 1,2,3).
 subject("Fisica 2", "Lucchetta", "Ingegneria Informatica", 1,2,3).
-subject("Fondamenti Di Informatica", "Sernani", "Ingegneria Informatica", 1,2,2).
+subject("Informatica", "Sernani", "Ingegneria Informatica", 1,2,2).
 subject("Economia", "Iacobucci", "Ingegneria Informatica", 1,2,2).
 
 % Predicato che restituisce tutti i corsi disponibili
@@ -86,7 +86,7 @@ availability("Lingua Inglese", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 availability("Algebra Lineare", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 availability("Analisi 2", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
 availability("Fisica 2", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
-availability("Fondamenti Di Informatica", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Wednesday".
+availability("Informatica", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Wednesday".
 availability("Economia", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Friday".
 
 

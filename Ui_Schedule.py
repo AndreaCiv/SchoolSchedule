@@ -207,6 +207,15 @@ class Ui_Schedule(object):
         self.cambia_orario.setObjectName("cambia_orario")
         self.cambia_orario.clicked.connect(self.cambia_orario_funzione)
         self.gridLayout.addWidget(self.cambia_orario, 5, 4, 1, 1)
+
+        self.modifica_materie = QtWidgets.QPushButton(self.centralwidget)
+        self.modifica_materie.setMinimumSize(QtCore.QSize(150, 50))
+        self.modifica_materie.setMaximumSize(QtCore.QSize(150, 50))
+        self.modifica_materie.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
+        self.modifica_materie.setObjectName("modifica_materie")
+        self.gridLayout.addWidget(self.modifica_materie, 5, 1, 1, 1)
+
+
         spacerItem13 = QtWidgets.QSpacerItem(64, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem13, 5, 5, 1, 1)
         spacerItem14 = QtWidgets.QSpacerItem(20, 0, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -276,19 +285,26 @@ class Ui_Schedule(object):
         item = self.tableWidget.horizontalHeaderItem(4)
         item.setText(_translate("Schedule", "Friday"))
         self.cambia_orario.setText(_translate("Schedule", "Cambia Orario"))
+        self.modifica_materie.setText(_translate("Schedule", "Modifica Materie"))
 
+    # Funzione da connettere al bottone calcola orario
+    # Calcola l'orario e lo visualizza sull'interfaccia grafica
     def crea_orario_prima_volta(self):
         course = self.seleziona_corso.currentText()
         year = int(self.seleziona_anno.currentText())
         semester = int(self.seleziona_semestre.currentText())
         possible_schedules = self.prologInterface.create_semester_schedule(course, year, semester)
         self.possible_schedules = possible_schedules
+        self.numero_calendario = 0
         first_schedule = self.possible_schedules[0]
         for i in range(0,4):
             for j in range(0,5):
                 self.tableWidget.setItem(i,j, QTableWidgetItem())
         self.visualizza_orario(first_schedule)
 
+    # Funzione da connettere al pulsante cambia orario
+    # Scorre i possibili orari e li visualizza, restituisce un messaggio di errore se non è stato ancora calcolato alcun
+    # orario o se non ci sono altri orari disponibili
     def cambia_orario_funzione(self):
         if self.possible_schedules == None:
             QMessageBox.critical(None,"Errore", "Non è ancora stato calcolato nessun orario",QMessageBox.Ok, QMessageBox.Ok)

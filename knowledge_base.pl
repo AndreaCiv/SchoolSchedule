@@ -213,7 +213,11 @@ create_semester_schedule(Course, Year, Semester, SemesterSchedule) :-
     create_course_schedule(Bag, SemesterSchedule),
     no_conflict_6(SemesterSchedule).
 
-%
+% Funzione per ottenere tutti i corsi di studi
 get_courses(Bag) :-
     findall([Course, Year, Semester], subject(_, _, Course, Year, Semester, _), Bag1),
     remove_duplicates(Bag1, Bag).
+
+% Funzione per ottenere tutte le materie
+get_subjects(Bag) :-
+    findall([Subject, Professor, Course, Year, Semester, WeeklyLessons], subject(Subject, Professor, Course, Year, Semester, WeeklyLessons), Bag).

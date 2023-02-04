@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import *
+from NewSubjectView import NewSubjectView
 
 from PyQt5.QtWidgets import QTableWidgetItem, QAbstractItemView, QMessageBox
 
@@ -153,6 +154,11 @@ class Ui_SubjectsList(object):
         item.setText(_translate("SubjectsList", "Weekly Lessons"))
         self.aggiungi_materia.setText(_translate("SubjectsList", "Add"))
         self.elimina_materia.setText(_translate("SubjectsList", "Delete"))
+        self.aggiungi_materia.clicked.connect(self.visualizza_nuova_materia)
+
+    def visualizza_nuova_materia(self):
+        self.vista_nuova_materia = NewSubjectView(self.prologInterface)
+        self.vista_nuova_materia.show()
 
     def popola_subjects(self):
         subjects = self.prologInterface.get_subjects()
@@ -197,6 +203,7 @@ class Ui_SubjectsList(object):
             self.tableWidget.setItem(i, 5, lezioni_settimanali)
 
             i = i+1
+
     def elimina_materia_funzione(self):
         i = self.tableWidget.currentRow()
         materia = self.tableWidget.item(i,0).text()

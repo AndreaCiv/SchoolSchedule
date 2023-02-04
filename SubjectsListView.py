@@ -7,7 +7,6 @@ class SubjectsListView(QWidget):
         self.ListView = Ui_SubjectsList()
         self.ListView.setupUi(self, prologInterface)
 
-    def show_schedule(self, prologInterface):
-        self.ListView.setupUi(self, prologInterface)
+    def show_subject_list_view(self):
         self.show()
-
+        self.update()

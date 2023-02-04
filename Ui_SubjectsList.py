@@ -9,10 +9,16 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import Qt
+from PyQt5.QtGui import *
+
+from PyQt5.QtWidgets import QTableWidgetItem, QAbstractItemView, QMessageBox
 
 
 class Ui_SubjectsList(object):
     def setupUi(self, SubjectsList, prologInterface):
+        self.prologInterface = prologInterface
+
         SubjectsList.setObjectName("SubjectsList")
         SubjectsList.resize(1000, 600)
         SubjectsList.setMinimumSize(QtCore.QSize(1000, 600))
@@ -64,6 +70,8 @@ class Ui_SubjectsList(object):
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.tableWidget.sizePolicy().hasHeightForWidth())
         self.tableWidget.setSizePolicy(sizePolicy)
+        self.tableWidget.setSelectionBehavior(QAbstractItemView.SelectRows)
+        self.tableWidget.setSelectionMode(QAbstractItemView.SingleSelection)
         self.tableWidget.setMinimumSize(QtCore.QSize(850, 200))
         self.tableWidget.setMaximumSize(QtCore.QSize(850, 200))
         self.tableWidget.setAutoFillBackground(False)
@@ -117,12 +125,15 @@ class Ui_SubjectsList(object):
         self.elimina_materia.setMaximumSize(QtCore.QSize(150, 50))
         self.elimina_materia.setStyleSheet("background-color: rgb(255, 255, 255); border-radius: 5px;")
         self.elimina_materia.setObjectName("elimina_materia")
+        self.elimina_materia.clicked.connect(self.elimina_materia_funzione)
         self.gridLayout.addWidget(self.elimina_materia, 4, 4, 1, 1)
         spacerItem8 = QtWidgets.QSpacerItem(64, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.gridLayout.addItem(spacerItem8, 4, 5, 1, 1)
 
         self.retranslateUi(SubjectsList)
         QtCore.QMetaObject.connectSlotsByName(SubjectsList)
+
+        self.popola_subjects()
 
     def retranslateUi(self, SubjectsList):
         _translate = QtCore.QCoreApplication.translate
@@ -143,12 +154,67 @@ class Ui_SubjectsList(object):
         self.aggiungi_materia.setText(_translate("SubjectsList", "Add"))
         self.elimina_materia.setText(_translate("SubjectsList", "Delete"))
 
+    def popola_subjects(self):
+        subjects = self.prologInterface.get_subjects()
+        i = 0
+        for subject in subjects:
+            self.tableWidget.setRowCount(i+1)
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    SubjectsList = QtWidgets.QWidget()
-    ui = Ui_SubjectsList()
-    ui.setupUi(SubjectsList)
-    SubjectsList.show()
-    sys.exit(app.exec_())
+            materia = QTableWidgetItem()
+            materia.setText(subject[0])
+            materia.setTextAlignment(Qt.AlignCenter)
+            materia.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 0, materia)
+
+            professore = QTableWidgetItem()
+            professore.setText(subject[1])
+            professore.setTextAlignment(Qt.AlignCenter)
+            professore.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 1, professore)
+
+            corso = QTableWidgetItem()
+            corso.setText(subject[2])
+            corso.setTextAlignment(Qt.AlignCenter)
+            corso.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 2, corso)
+
+            anno = QTableWidgetItem()
+            anno.setText(str(subject[3]))
+            anno.setTextAlignment(Qt.AlignCenter)
+            anno.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 3, anno)
+
+            semestre = QTableWidgetItem()
+            semestre.setText(str(subject[4]))
+            semestre.setTextAlignment(Qt.AlignCenter)
+            semestre.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 4, semestre)
+
+            lezioni_settimanali = QTableWidgetItem()
+            lezioni_settimanali.setText(str(subject[5]))
+            lezioni_settimanali.setTextAlignment(Qt.AlignCenter)
+            lezioni_settimanali.setFlags(materia.flags() ^ Qt.ItemIsEditable)
+            self.tableWidget.setItem(i, 5, lezioni_settimanali)
+
+            i = i+1
+    def elimina_materia_funzione(self):
+        i = self.tableWidget.currentRow()
+        materia = self.tableWidget.item(i,0).text()
+        professore = self.tableWidget.item(i,1).text()
+        corso = self.tableWidget.item(i,2).text()
+        anno = int(self.tableWidget.item(i,3).text())
+        semestre = int(self.tableWidget.item(i,4).text())
+        lezioni_settimanali = int(self.tableWidget.item(i,5).text())
+
+        risposta = QMessageBox.question(None, "Delete Subject",
+                                        "Are you sure you want to delete "+materia+"?",
+                                        QMessageBox.Yes,
+                                        QMessageBox.No)
+        if risposta == QMessageBox.Yes:
+            self.prologInterface.delete_subject(materia)
+            self.popola_subjects()
+        else:
+            return
+
+
+

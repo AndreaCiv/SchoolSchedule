@@ -233,7 +233,7 @@ class Ui_Schedule(object):
 
     def open_subjects_list(self):
         self.vista_lista_materie = SubjectsListView(self.prologInterface)
-        self.vista_lista_materie.show()
+        self.vista_lista_materie.show_subject_list_view()
 
     def populate_seleziona_corso(self):
         courses = self.prologInterface.get_courses()
@@ -311,10 +311,10 @@ class Ui_Schedule(object):
     # orario o se non ci sono altri orari disponibili
     def cambia_orario_funzione(self):
         if self.possible_schedules == None:
-            QMessageBox.critical(None,"Errore", "Non è ancora stato calcolato nessun orario",QMessageBox.Ok, QMessageBox.Ok)
+            QMessageBox.critical(None,"Error", "No schedule has been calculated yet",QMessageBox.Ok, QMessageBox.Ok)
             return
         if self.numero_calendario == len(self.possible_schedules)-1:
-            QMessageBox.critical(None,"Errore", "Non ci sono più calendari disponibili", QMessageBox.Ok,QMessageBox.Ok)
+            QMessageBox.critical(None,"Error", "There are no more schedules available", QMessageBox.Ok,QMessageBox.Ok)
             return
         for i in range(0,4):
             for j in range(0,5):

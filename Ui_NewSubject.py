@@ -70,9 +70,9 @@ class Ui_NewSubject(object):
         self.label_2.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_2.setObjectName("label_2")
         self.verticalLayout_5.addWidget(self.label_2)
-        self.new_course = QtWidgets.QPlainTextEdit(SubjectsList)
-        self.new_course.setMinimumSize(QtCore.QSize(200, 50))
-        self.new_course.setMaximumSize(QtCore.QSize(200, 50))
+        self.new_course = QtWidgets.QLineEdit(SubjectsList)
+        self.new_course.setMinimumSize(QtCore.QSize(150, 0))
+        self.new_course.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.new_course.setObjectName("new_course")
         self.verticalLayout_5.addWidget(self.new_course)
         self.horizontalLayout_2.addLayout(self.verticalLayout_5)
@@ -90,9 +90,9 @@ class Ui_NewSubject(object):
         self.label_5.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_5.setObjectName("label_5")
         self.verticalLayout_8.addWidget(self.label_5)
-        self.new_subject = QtWidgets.QPlainTextEdit(SubjectsList)
-        self.new_subject.setMinimumSize(QtCore.QSize(200, 50))
-        self.new_subject.setMaximumSize(QtCore.QSize(200, 50))
+        self.new_subject = QtWidgets.QLineEdit(SubjectsList)
+        self.new_subject.setMinimumSize(QtCore.QSize(150, 0))
+        self.new_subject.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.new_subject.setObjectName("new_subject")
         self.verticalLayout_8.addWidget(self.new_subject)
         self.horizontalLayout_2.addLayout(self.verticalLayout_8)
@@ -110,9 +110,9 @@ class Ui_NewSubject(object):
         self.label_6.setStyleSheet("color: rgb(255, 255, 255);")
         self.label_6.setObjectName("label_6")
         self.verticalLayout_9.addWidget(self.label_6)
-        self.new_prof = QtWidgets.QPlainTextEdit(SubjectsList)
-        self.new_prof.setMinimumSize(QtCore.QSize(200, 50))
-        self.new_prof.setMaximumSize(QtCore.QSize(200, 50))
+        self.new_prof = QtWidgets.QLineEdit(SubjectsList)
+        self.new_prof.setMinimumSize(QtCore.QSize(150, 0))
+        self.new_prof.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.new_prof.setObjectName("new_prof")
         self.verticalLayout_9.addWidget(self.new_prof)
         self.horizontalLayout_2.addLayout(self.verticalLayout_9)
@@ -234,7 +234,7 @@ class Ui_NewSubject(object):
         self.label_13 = QtWidgets.QLabel(SubjectsList)
         self.label_13.setMinimumSize(QtCore.QSize(150, 50))
         self.label_13.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_13.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_13.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_13.setAlignment(QtCore.Qt.AlignCenter)
         self.label_13.setObjectName("label_13")
@@ -242,7 +242,7 @@ class Ui_NewSubject(object):
         self.label_15 = QtWidgets.QLabel(SubjectsList)
         self.label_15.setMinimumSize(QtCore.QSize(150, 50))
         self.label_15.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_15.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_15.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_15.setAlignment(QtCore.Qt.AlignCenter)
         self.label_15.setObjectName("label_15")
@@ -250,7 +250,7 @@ class Ui_NewSubject(object):
         self.label_14 = QtWidgets.QLabel(SubjectsList)
         self.label_14.setMinimumSize(QtCore.QSize(150, 50))
         self.label_14.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_14.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_14.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_14.setAlignment(QtCore.Qt.AlignCenter)
         self.label_14.setObjectName("label_14")
@@ -258,7 +258,7 @@ class Ui_NewSubject(object):
         self.label_16 = QtWidgets.QLabel(SubjectsList)
         self.label_16.setMinimumSize(QtCore.QSize(150, 50))
         self.label_16.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_16.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_16.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_16.setAlignment(QtCore.Qt.AlignCenter)
         self.label_16.setObjectName("label_16")
@@ -266,7 +266,7 @@ class Ui_NewSubject(object):
         self.label_18 = QtWidgets.QLabel(SubjectsList)
         self.label_18.setMinimumSize(QtCore.QSize(150, 50))
         self.label_18.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_18.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_18.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_18.setAlignment(QtCore.Qt.AlignCenter)
         self.label_18.setObjectName("label_18")
@@ -409,7 +409,7 @@ class Ui_NewSubject(object):
         self.label_9 = QtWidgets.QLabel(SubjectsList)
         self.label_9.setMinimumSize(QtCore.QSize(150, 50))
         self.label_9.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_9.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_9.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_9.setAlignment(QtCore.Qt.AlignCenter)
         self.label_9.setObjectName("label_9")
@@ -417,7 +417,7 @@ class Ui_NewSubject(object):
         self.label_10 = QtWidgets.QLabel(SubjectsList)
         self.label_10.setMinimumSize(QtCore.QSize(150, 50))
         self.label_10.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_10.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_10.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_10.setAlignment(QtCore.Qt.AlignCenter)
         self.label_10.setObjectName("label_10")
@@ -425,16 +425,15 @@ class Ui_NewSubject(object):
         self.label_11 = QtWidgets.QLabel(SubjectsList)
         self.label_11.setMinimumSize(QtCore.QSize(150, 50))
         self.label_11.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_11.setStyleSheet("background-color: rgb(170, 170, 170);\n"
-"border-radius: 5px;\n"
-"")
+        self.label_11.setStyleSheet("background-color: rgb(255, 255, 255);\n"
+"border-radius: 5px;")
         self.label_11.setAlignment(QtCore.Qt.AlignCenter)
         self.label_11.setObjectName("label_11")
         self.gridLayout.addWidget(self.label_11, 3, 0, 1, 1)
         self.label_12 = QtWidgets.QLabel(SubjectsList)
         self.label_12.setMinimumSize(QtCore.QSize(150, 50))
         self.label_12.setMaximumSize(QtCore.QSize(150, 50))
-        self.label_12.setStyleSheet("background-color: rgb(170, 170, 170);\n"
+        self.label_12.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.label_12.setAlignment(QtCore.Qt.AlignCenter)
         self.label_12.setObjectName("label_12")
@@ -542,7 +541,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     SubjectsList = QtWidgets.QWidget()
-    ui = Ui_NewSubject()
+    ui = Ui_SubjectsList()
     ui.setupUi(SubjectsList)
     SubjectsList.show()
     sys.exit(app.exec_())

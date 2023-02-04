@@ -136,18 +136,15 @@ alternate-background-color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="new_course">
+        <widget class="QLineEdit" name="new_course">
          <property name="minimumSize">
           <size>
-           <width>200</width>
-           <height>50</height>
+           <width>150</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>50</height>
-          </size>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </item>
@@ -188,18 +185,15 @@ alternate-background-color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="new_subject">
+        <widget class="QLineEdit" name="new_subject">
          <property name="minimumSize">
           <size>
-           <width>200</width>
-           <height>50</height>
+           <width>150</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>50</height>
-          </size>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </item>
@@ -240,18 +234,15 @@ alternate-background-color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="QPlainTextEdit" name="new_prof">
+        <widget class="QLineEdit" name="new_prof">
          <property name="minimumSize">
           <size>
-           <width>200</width>
-           <height>50</height>
+           <width>150</width>
+           <height>0</height>
           </size>
          </property>
-         <property name="maximumSize">
-          <size>
-           <width>200</width>
-           <height>50</height>
-          </size>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(255, 255, 255);</string>
          </property>
         </widget>
        </item>
@@ -551,7 +542,7 @@ alternate-background-color: rgb(255, 255, 255);
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -577,7 +568,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -603,7 +594,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -629,7 +620,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -655,7 +646,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -981,7 +972,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -1007,7 +998,7 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">
@@ -1033,9 +1024,8 @@ border-radius: 5px;</string>
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
-border-radius: 5px;
-</string>
+        <string notr="true">background-color: rgb(255, 255, 255);
+border-radius: 5px;</string>
        </property>
        <property name="text">
         <string>14:30-16:30</string>
@@ -1060,7 +1050,7 @@ border-radius: 5px;
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color: rgb(170, 170, 170);
+        <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;</string>
        </property>
        <property name="text">

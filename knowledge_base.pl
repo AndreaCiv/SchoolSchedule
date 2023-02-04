@@ -17,7 +17,17 @@ get_all_courses(Courses):-
     findall(Course , subject(_,_, Course,_,_,_), AllCourses),
     remove_duplicates(AllCourses, Courses).
 
+% Predicato che restituisce gli anni di un corso di studi per cui è
+% possibile avere lezione
+get_all_years_by_course(Course, Years):-
+    findall(Year, subject(_,_, Course, Year, _,_), AllYears),
+    remove_duplicates(AllYears, Years).
 
+% Predicato che restituisce i semestri di un corso e di un anno per cui
+% è possibile avere lezione
+get_all_semesters_by_course_and_year(Course, Year, Semesters):-
+    findall(Semester, subject(_, _, Course, Year, Semester, _), AllSemesters),
+    remove_duplicates(AllSemesters, Semesters).
 
 % Predicati che definiscono i giorni della settimana in cui ci possono
 % essere lezioni

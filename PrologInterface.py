@@ -3,7 +3,7 @@ from Schedule import *
 class PrologInterface:
 
     def __init__(self, file_name):
-        self.mqi = PrologMQI()
+        self.mqi = PrologMQI(prolog_path="c:/program files/swipl/bin")
         self.prolog_thread = self.mqi.create_thread()
         self.prolog_thread.query("set_prolog_flag(encoding,utf8).")
         self.prolog_thread.query("consult(\""+ file_name +"\").")
@@ -12,14 +12,19 @@ class PrologInterface:
     # corso, una lista contenente il nome del corso, l'anno e il semestre
     def get_courses(self):
         corsi = self.prolog_thread.query("get_all_courses(Bag).")
-        print(corsi)
-        #print(corsi[0]['Bag'])
         courses = corsi[0]['Bag']
         return courses
-        #print(len(data))
-        #print(data)
-        #return courses
 
+    def get_years_by_course(self, course):
+        anni = self.prolog_thread.query("get_all_years_by_course(\""+ course +"\", Years).")
+        print("get_all_years_by_course(\"" + course +"\", Years).")
+        years = anni[0]['Years']
+        return years
+
+    def get_semesters_by_course_and_year(self, course, year):
+        semestri = self.prolog_thread.query("get_all_semesters_by_course_and_year(\""+course+"\","+year+", Semesters).")
+        semesters = semestri[0]['Semesters']
+        return semesters
 
     def insert_subject(self, subject, professor, course, year, semester, weeklyLessons):
         query = "assertz(subject(\"" + subject + "\",\"" + professor + "\",\"" + course + "\"," + str(year) + "," + str(semester) + ","+ str(weeklyLessons) + "))."

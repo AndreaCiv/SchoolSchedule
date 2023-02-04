@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui
 from PyQt5 import QtWidgets
 
 from PyQt5 import *
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QTableWidgetItem, QMessageBox
 
 
@@ -71,9 +72,11 @@ class Ui_Schedule(object):
         #self.seleziona_corso.setMaximumSize(QtCore.QSize(16777215, 19))
         self.seleziona_corso.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.seleziona_corso.setObjectName("seleziona_corso")
+
         self.populate_seleziona_corso()
-        #self.seleziona_corso.addItem("")
-        #self.seleziona_corso.addItem("")
+
+        self.seleziona_corso.activated.connect(self.populate_seleziona_anno)
+
         self.verticalLayout_2.addWidget(self.seleziona_corso)
         self.horizontalLayout.addLayout(self.verticalLayout_2)
         spacerItem2 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -98,8 +101,10 @@ class Ui_Schedule(object):
         self.seleziona_anno.setMinimumSize(QtCore.QSize(150,40))
         self.seleziona_anno.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.seleziona_anno.setObjectName("seleziona_anno")
-        self.seleziona_anno.addItem("")
-        self.seleziona_anno.addItem("")
+
+        self.seleziona_anno.activated.connect(self.populate_seleziona_semestre)
+
+
         self.verticalLayout_3.addWidget(self.seleziona_anno)
         self.horizontalLayout.addLayout(self.verticalLayout_3)
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -125,9 +130,6 @@ class Ui_Schedule(object):
 
         self.seleziona_semestre.setStyleSheet("background-color: rgb(255, 255, 255);")
         self.seleziona_semestre.setObjectName("seleziona_semestre")
-        self.seleziona_semestre.addItem("")
-        self.seleziona_semestre.addItem("")
-        self.seleziona_semestre.addItem("")
         self.verticalLayout_4.addWidget(self.seleziona_semestre)
         self.horizontalLayout.addLayout(self.verticalLayout_4)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -214,9 +216,10 @@ class Ui_Schedule(object):
         self.statusbar.setObjectName("statusbar")
         Schedule.setStatusBar(self.statusbar)
 
+        self.populate_seleziona_anno()
+        self.populate_seleziona_semestre()
         self.retranslateUi(Schedule)
         QtCore.QMetaObject.connectSlotsByName(Schedule)
-
 
 
     def populate_seleziona_corso(self):
@@ -225,20 +228,34 @@ class Ui_Schedule(object):
             print(course)
             self.seleziona_corso.addItem(course)
 
+    def populate_seleziona_anno(self):
+        self.seleziona_anno.clear()
+        course = self.seleziona_corso.currentText()
+        years = self.prologInterface.get_years_by_course(course)
+        for year in years:
+            self.seleziona_anno.addItem(str(year))
+
+    def populate_seleziona_semestre(self):
+        self.seleziona_semestre.clear()
+        course = self.seleziona_corso.currentText()
+        year = self.seleziona_anno.currentText()
+        semesters = self.prologInterface.get_semesters_by_course_and_year(course,year)
+        for semester in semesters:
+            self.seleziona_semestre.addItem(str(semester))
 
     def retranslateUi(self, Schedule):
         _translate = QtCore.QCoreApplication.translate
         Schedule.setWindowTitle(_translate("Schedule", "Schedule for you"))
         self.label.setText(_translate("Schedule", "Seleziona corso"))
-        self.seleziona_corso.setItemText(0, _translate("Schedule", "Ingegneria Informatica"))
-        self.seleziona_corso.setItemText(1, _translate("Schedule", "Ingeneria Elettronica"))
+        #self.seleziona_corso.setItemText(0, _translate("Schedule", "Ingegneria Informatica"))
+        #self.seleziona_corso.setItemText(1, _translate("Schedule", "Ingeneria Elettronica"))
         self.label_2.setText(_translate("Schedule", "Seleziona anno"))
-        self.seleziona_anno.setItemText(0, _translate("Schedule", "1"))
-        self.seleziona_anno.setItemText(1, _translate("Schedule", "2"))
+        #self.seleziona_anno.setItemText(0, _translate("Schedule", "1"))
+        #self.seleziona_anno.setItemText(1, _translate("Schedule", "2"))
         self.label_3.setText(_translate("Schedule", "Seleziona semestre"))
-        self.seleziona_semestre.setItemText(0, _translate("Schedule", "1"))
-        self.seleziona_semestre.setItemText(1, _translate("Schedule", "2"))
-        self.seleziona_semestre.setItemText(2, _translate("Schedule", "3"))
+        #self.seleziona_semestre.setItemText(0, _translate("Schedule", "1"))
+        #self.seleziona_semestre.setItemText(1, _translate("Schedule", "2"))
+        #self.seleziona_semestre.setItemText(2, _translate("Schedule", "3"))
         self.calcola_orario.setText(_translate("Schedule", "Calcola Orario"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Schedule", "8:30-10:30"))
@@ -267,6 +284,9 @@ class Ui_Schedule(object):
         possible_schedules = self.prologInterface.create_semester_schedule(course, year, semester)
         self.possible_schedules = possible_schedules
         first_schedule = self.possible_schedules[0]
+        for i in range(0,4):
+            for j in range(0,5):
+                self.tableWidget.setItem(i,j, QTableWidgetItem())
         self.visualizza_orario(first_schedule)
 
     def cambia_orario_funzione(self):
@@ -286,7 +306,8 @@ class Ui_Schedule(object):
     def visualizza_orario(self, schedule):
         for session in schedule.schedule:
             item = QTableWidgetItem()
-            item.setText(session.subject+"\n"+session.professor)
+            item.setText(session.subject)
+            item.setTextAlignment(Qt.AlignCenter)
             coordinates = session.get_coordinates()
             self.tableWidget.setItem(coordinates[0], coordinates[1], item)
 

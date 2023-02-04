@@ -328,14 +328,4 @@ class Ui_Schedule(object):
             self.tableWidget.setItem(coordinates[0], coordinates[1], item)
             item.setFlags(item.flags() ^ Qt.ItemIsEditable)
 
-if __name__ == "_main_":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Schedule = QtWidgets.QMainWindow()
-    ui = Ui_Schedule()
-    ui.setupUi(Schedule)
-    Schedule.show()
-    sys.exit(app.exec_())
-
-
 

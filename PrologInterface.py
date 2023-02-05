@@ -3,7 +3,7 @@ from Schedule import *
 class PrologInterface:
 
     def __init__(self, file_name):
-        self.mqi = PrologMQI(prolog_path="c:/program files/swipl/bin")
+        self.mqi = PrologMQI()
         self.prolog_thread = self.mqi.create_thread()
         self.prolog_thread.query("set_prolog_flag(encoding,utf8).")
         self.prolog_thread.query("consult(\""+ file_name +"\").")
@@ -54,7 +54,7 @@ class PrologInterface:
     # Funzione che ritorna la lista contenente tutti i possibili orari del corso selezionato, di quell'anno
     # e di quel semestre
     def create_semester_schedule(self, course, year, semester):
-        result = self.prolog_thread.query("create_semester_schedule(\""+ course +"\","+ str(year) +","+ str(semester) +",X)")
+        result = self.prolog_thread.query("limit(200,create_semester_schedule(\""+ course +"\","+ str(year) +","+ str(semester) +",X)).")
         possible_schedules = []
         for item in result:
             raw_schedule = item['X']

@@ -510,9 +510,9 @@ class Ui_NewSubject(object):
         _translate = QtCore.QCoreApplication.translate
         SubjectsList.setWindowTitle(_translate("SubjectsList", "Subjects List"))
         self.label.setText(_translate("SubjectsList", "Insert new subject"))
-        self.label_2.setText(_translate("SubjectsList", "Select Course"))
-        self.label_5.setText(_translate("SubjectsList", "Select Subject"))
-        self.label_6.setText(_translate("SubjectsList", "Select Prof"))
+        self.label_2.setText(_translate("SubjectsList", "Insert Course"))
+        self.label_5.setText(_translate("SubjectsList", "Insert Subject"))
+        self.label_6.setText(_translate("SubjectsList", "Insert Prof"))
         self.label_4.setText(_translate("SubjectsList", "Select Year"))
         self.new_year.setItemText(0, _translate("SubjectsList", "1"))
         self.new_year.setItemText(1, _translate("SubjectsList", "2"))

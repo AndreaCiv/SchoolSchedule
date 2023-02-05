@@ -55,6 +55,8 @@ class PrologInterface:
     # e di quel semestre
     def create_semester_schedule(self, course, year, semester):
         result = self.prolog_thread.query("limit(200,create_semester_schedule(\""+ course +"\","+ str(year) +","+ str(semester) +",X)).")
+        if result==False:
+            return False
         possible_schedules = []
         for item in result:
             raw_schedule = item['X']

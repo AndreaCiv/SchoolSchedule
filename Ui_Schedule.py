@@ -301,6 +301,10 @@ class Ui_Schedule(object):
         year = int(self.seleziona_anno.currentText())
         semester = int(self.seleziona_semestre.currentText())
         possible_schedules = self.prologInterface.create_semester_schedule(course, year, semester)
+        if possible_schedules == False:
+            QMessageBox.critical(None, "Error", "The are no possible schedules", QMessageBox.Ok,
+                                 QMessageBox.Ok)
+            return
         self.possible_schedules = possible_schedules
         self.numero_calendario = 0
         first_schedule = self.possible_schedules[0]

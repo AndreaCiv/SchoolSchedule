@@ -34,7 +34,7 @@ class Ui_Schedule(object):
         Schedule.setMinimumSize(QtCore.QSize(1000, 600))
         Schedule.setMaximumSize(QtCore.QSize(1000, 600))
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("padre-pio.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Logo_Università_Politecnica_delle_Marche.svg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         Schedule.setWindowIcon(icon)
         Schedule.setStyleSheet("background-color: rgb(193, 9, 42);\n"
 "alternate-background-color: rgb(255, 255, 255);\n"

@@ -80,12 +80,12 @@ slot(Day,"16:30","18:30"):-
 % NB: Anche se è possibile fare sempre lezione per una materia, ci deve
 % comunque essere il predicato availability per quella materia che sarà
 % sempre vero.
-availability("Analisi 1", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
-availability("Fisica 1", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
+availability("Analisi 1", Day, _) :- Day = "Monday"; Day = "Wednesday"; Day = "Friday".
+availability("Fisica 1", Day, _) :- Day = "Monday"; Day = "Wednesday"; Day = "Friday".
 availability("Lingua Inglese", Day, _) :- Day = "Thursday"; Day = "Tuesday".
 availability("Algebra Lineare", Day, _) :- Day = "Thursday"; Day = "Tuesday".
-availability("Analisi 2", Day, StartHour) :- Day = "Monday", StartHour = "8:30" ; Day = "Wednesday", StartHour = "8:30"; Day = "Friday", StartHour= "8:30".
-availability("Fisica 2", Day, StartHour) :- Day = "Monday", StartHour = "10:30" ; Day = "Wednesday", StartHour = "10:30"; Day = "Friday", StartHour= "10:30".
+availability("Analisi 2", _, StartHour) :- StartHour = "8:30".
+availability("Fisica 2", _, StartHour) :- StartHour = "14:30".
 availability("Informatica", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Wednesday".
 availability("Economia", Day, _) :- Day = "Thursday"; Day = "Tuesday"; Day = "Friday".
 

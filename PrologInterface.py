@@ -3,7 +3,7 @@ from Schedule import *
 class PrologInterface:
 
     def __init__(self, file_name):
-        self.mqi = PrologMQI(prolog_path="c:/program files/swipl/bin")
+        self.mqi = PrologMQI()
         self.prolog_thread = self.mqi.create_thread()
         self.prolog_thread.query("set_prolog_flag(encoding,utf8).")
         self.prolog_thread.query("consult(\""+ file_name +"\").")
@@ -36,6 +36,12 @@ class PrologInterface:
         query = "assertz(availability(\"" + subject + "\",\"" + day + "\",\"" + startHour + "\"))."
         #print(query)
         self.prolog_thread.query(query)
+        return True
+
+    def insert_subject_and_availability(self, subject, professor, course, year, semester, weeklyLessons, availabilities):
+        self.insert_subject(subject, professor, course, year, semester, weeklyLessons)
+        for availability in availabilities:
+            self.insert_availability(subject, availability[0], availability[1])
         return True
 
     def delete_subject(self, subject):

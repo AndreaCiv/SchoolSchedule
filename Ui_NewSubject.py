@@ -9,10 +9,15 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 
 class Ui_NewSubject(object):
-    def setupUi(self, SubjectsList, prologInterface):
+    def setupUi(self, SubjectsList, prologInterface, close_function):
+
+        self.prologInterface = prologInterface
+        self.close_function = close_function
+
         SubjectsList.setObjectName("SubjectsList")
         SubjectsList.resize(1000, 600)
         SubjectsList.setMinimumSize(QtCore.QSize(1000, 600))
@@ -20,9 +25,7 @@ class Ui_NewSubject(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("padre-pio.jpg"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         SubjectsList.setWindowIcon(icon)
-        SubjectsList.setStyleSheet("background-color: rgb(193, 9, 42);\n"
-"alternate-background-color: rgb(255, 255, 255);\n"
-"")
+        SubjectsList.setStyleSheet("background-color: rgb(193, 9, 42);\n" "alternate-background-color: rgb(255, 255, 255);\n""")
         self.gridLayout_2 = QtWidgets.QGridLayout(SubjectsList)
         self.gridLayout_2.setObjectName("gridLayout_2")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
@@ -496,6 +499,7 @@ class Ui_NewSubject(object):
         self.add_materia.setStyleSheet("background-color: rgb(255, 255, 255);\n"
 "border-radius: 5px;")
         self.add_materia.setObjectName("add_materia")
+        self.add_materia.clicked.connect(self.insert_subject)
         self.horizontalLayout_24.addWidget(self.add_materia)
         self.gridLayout_2.addLayout(self.horizontalLayout_24, 5, 0, 1, 1)
 
@@ -536,12 +540,67 @@ class Ui_NewSubject(object):
         self.label_12.setText(_translate("SubjectsList", "16:30-18:30"))
         self.add_materia.setText(_translate("SubjectsList", "Add"))
 
+    def insert_subject(self):
+        availabilities = []
+        subject = self.new_subject.text()
+        professor = self.new_prof.text()
+        course = self.new_course.text()
+        year = int(self.new_year.currentText())
+        semester = int(self.new_semester.currentText())
+        weekly_lessons = int(self.new_weekly_lessons.currentText())
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    SubjectsList = QtWidgets.QWidget()
-    ui = Ui_SubjectsList()
-    ui.setupUi(SubjectsList)
-    SubjectsList.show()
-    sys.exit(app.exec_())
+        if subject=="" or professor=="" or course=="":
+                QMessageBox.critical(None, "Error", "Please fill all the form",
+                                     QMessageBox.Ok,
+                                     QMessageBox.Ok)
+                return
+
+        if self.lun_1.isChecked():
+                availabilities.append(["Monday", "8:30"])
+        if self.lun_2.isChecked():
+                availabilities.append(["Monday", "10:30"])
+        if self.lun_3.isChecked():
+                availabilities.append(["Monday", "14:30"])
+        if self.lun_4.isChecked():
+                availabilities.append(["Monday", "16:30"])
+        if self.mar_1.isChecked():
+                availabilities.append(["Thursday", "8:30"])
+        if self.mar_2.isChecked():
+                availabilities.append(["Thursday", "10:30"])
+        if self.mar_3.isChecked():
+                availabilities.append(["Thursday", "14:30"])
+        if self.mar_4.isChecked():
+                availabilities.append(["Thursday", "16:30"])
+        if self.mer_1.isChecked():
+                availabilities.append(["Wednesday", "8:30"])
+        if self.mer_2.isChecked():
+                availabilities.append(["Wednesday", "10:30"])
+        if self.mer_3.isChecked():
+                availabilities.append(["Wednesday", "14:30"])
+        if self.mer_4.isChecked():
+                availabilities.append(["Wednesday", "16:30"])
+        if self.gio_1.isChecked():
+                availabilities.append(["Tuesday", "8:30"])
+        if self.gio_2.isChecked():
+                availabilities.append(["Tuesday", "10:30"])
+        if self.gio_3.isChecked():
+                availabilities.append(["Tuesday", "14:30"])
+        if self.gio_4.isChecked():
+                availabilities.append(["Tuesday", "16:30"])
+        if self.ven_1.isChecked():
+                availabilities.append(["Friday", "8:30"])
+        if self.ven_2.isChecked():
+                availabilities.append(["Friday", "10:30"])
+        if self.ven_3.isChecked():
+                availabilities.append(["Friday", "14:30"])
+        if self.ven_4.isChecked():
+                availabilities.append(["Friday", "16:30"])
+
+        if len(availabilities) < weekly_lessons:
+                QMessageBox.critical(None, "Error", "Too many weekly lessons, please add availabilities", QMessageBox.Ok,
+                                     QMessageBox.Ok)
+                return
+
+        self.prologInterface.insert_subject_and_availability(subject, professor, course, year, semester, weekly_lessons, availabilities)
+        self.close_function()
+

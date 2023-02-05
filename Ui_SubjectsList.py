@@ -158,7 +158,7 @@ class Ui_SubjectsList(object):
         self.aggiungi_materia.clicked.connect(self.visualizza_nuova_materia)
 
     def visualizza_nuova_materia(self):
-        self.vista_nuova_materia = NewSubjectView(self.prologInterface)
+        self.vista_nuova_materia = NewSubjectView(self.prologInterface, self.popola_subjects)
         self.vista_nuova_materia.show()
 
     def popola_subjects(self):

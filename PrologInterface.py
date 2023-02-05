@@ -17,7 +17,6 @@ class PrologInterface:
 
     def get_years_by_course(self, course):
         anni = self.prolog_thread.query("get_all_years_by_course(\""+ course +"\", Years).")
-        print("get_all_years_by_course(\"" + course +"\", Years).")
         years = anni[0]['Years']
         return years
 

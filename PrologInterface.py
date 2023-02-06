@@ -26,14 +26,13 @@ class PrologInterface:
         return semesters
 
     def insert_subject(self, subject, professor, course, year, semester, weeklyLessons):
-        query = "assertz(subject(\"" + subject + "\",\"" + professor + "\",\"" + course + "\"," + str(year) + "," + str(semester) + ","+ str(weeklyLessons) + "))."
-        #print(query)
+        query = "assertz(subject(\"" + subject + "\",\"" + professor + "\",\"" + course + "\"," + str(year) + "," \
+                + str(semester) + ","+ str(weeklyLessons) + "))."
         self.prolog_thread.query(query)
         return True
 
     def insert_availability(self, subject, day, startHour):
         query = "assertz(availability(\"" + subject + "\",\"" + day + "\",\"" + startHour + "\"))."
-        #print(query)
         self.prolog_thread.query(query)
         return True
 

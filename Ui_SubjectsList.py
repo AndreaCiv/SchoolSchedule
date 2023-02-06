@@ -218,6 +218,3 @@ class Ui_SubjectsList(object):
             self.popola_subjects()
         else:
             return
-
-
-

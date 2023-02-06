@@ -34,6 +34,3 @@ class Session:
             coordinates.append(4)
 
         return coordinates
-
-    def print_session(self):
-        print(self.day + " " + self.startHour + " " + self.finishHour + " " + self.subject + " " + self.professor + " " + self.course)

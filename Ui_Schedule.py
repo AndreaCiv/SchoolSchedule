@@ -263,15 +263,8 @@ class Ui_Schedule(object):
         _translate = QtCore.QCoreApplication.translate
         Schedule.setWindowTitle(_translate("Schedule", "Schedule for you"))
         self.label.setText(_translate("Schedule", "Select Course"))
-        #self.seleziona_corso.setItemText(0, _translate("Schedule", "Ingegneria Informatica"))
-        #self.seleziona_corso.setItemText(1, _translate("Schedule", "Ingeneria Elettronica"))
         self.label_2.setText(_translate("Schedule", "Select year"))
-        #self.seleziona_anno.setItemText(0, _translate("Schedule", "1"))
-        #self.seleziona_anno.setItemText(1, _translate("Schedule", "2"))
         self.label_3.setText(_translate("Schedule", "Select semester"))
-        #self.seleziona_semestre.setItemText(0, _translate("Schedule", "1"))
-        #self.seleziona_semestre.setItemText(1, _translate("Schedule", "2"))
-        #self.seleziona_semestre.setItemText(2, _translate("Schedule", "3"))
         self.calcola_orario.setText(_translate("Schedule", "Calculate Schedule"))
         item = self.tableWidget.verticalHeaderItem(0)
         item.setText(_translate("Schedule", "8:30-10:30"))
@@ -338,5 +331,3 @@ class Ui_Schedule(object):
             coordinates = session.get_coordinates()
             self.tableWidget.setItem(coordinates[0], coordinates[1], item)
             item.setFlags(item.flags() ^ Qt.ItemIsEditable)
-
-

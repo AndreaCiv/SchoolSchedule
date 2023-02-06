@@ -8,7 +8,6 @@ if __name__ == "__main__":
 	prologInterface = PrologInterface(file_name)
 	prologInterface.get_courses()
 	app = QApplication(sys.argv)
-	#app.setStyle('Fusion')
 	view = ScheduleView(prologInterface)
 	view.show()
 	app.exec_()

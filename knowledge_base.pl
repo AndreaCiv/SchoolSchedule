@@ -29,6 +29,10 @@ get_all_semesters_by_course_and_year(Course, Year, Semesters):-
     findall(Semester, subject(_, _, Course, Year, Semester, _), AllSemesters),
     remove_duplicates(AllSemesters, Semesters).
 
+% Funzione per ottenere tutte le materie
+get_subjects(Bag) :-
+    findall([Subject, Professor, Course, Year, Semester, WeeklyLessons], subject(Subject, Professor, Course, Year, Semester, WeeklyLessons), Bag).
+
 % Predicati che definiscono i giorni della settimana in cui ci possono
 % essere lezioni
 day("Monday").

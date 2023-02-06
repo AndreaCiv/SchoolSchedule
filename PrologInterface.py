@@ -3,7 +3,9 @@ from Schedule import *
 class PrologInterface:
 
     def __init__(self, file_name):
-        self.mqi = PrologMQI()
+        # tendenzialmente il prolog path per windows è questo, per altri sistemi operativi (MacOS) potrebbe non essere necessario specificarlo
+        # nel caso di errore verificare che siano scaricati swiplserver (e verificare path del file eseguibile swipl) e PyQt5
+        self.mqi = PrologMQI(prolog_path="c:/program files/swipl/bin")
         self.prolog_thread = self.mqi.create_thread()
         self.prolog_thread.query("set_prolog_flag(encoding,utf8).")
         self.prolog_thread.query("consult(\""+ file_name +"\").")
